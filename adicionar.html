@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Adicionar Filme - Movie Vault</title>
+</head>
+<body>
+
+    <header>
+        <div>
+            <h1>Movie Vault</h1>
+            <p>Adicione um novo filme ao seu acervo.</p>
+        </div>
+        <nav>
+            <button class="voltar" onclick="location.href='index.html'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+                </svg>
+                Voltar ao Acervo
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <h2>Adicionar Novo Filme</h2>
+            <form id="add-movie-form" action="/salvar_filme" method="POST">
+                <label for="title">Nome do Filme:</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="genre">Gênero:</label>
+                <input type="text" id="genre" name="genre" required>
+
+                <label for="cover">URL da Capa (Imagem):</label>
+                <input type="url" id="cover" name="cover" required>
+
+                <label for="synopsis">Sinopse:</label>
+                <textarea id="synopsis" name="synopsis" rows="4" required></textarea>
+
+                <div class="form-buttons">
+                    <button type="submit">Salvar Filme</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+
+</body>
+</html>
