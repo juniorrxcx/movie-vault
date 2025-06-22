@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='icon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Adicionar Filme - Movie Vault</title>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Movie Vault</h1>
+            <p>Adicione um novo filme ao seu acervo.</p>
+        </div>
+        <nav>
+            <a href="{{ url_for('index') }}" class="voltar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+                </svg>
+                Voltar ao Acervo
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <h2>Adicionar Novo Filme</h2>
+            <form id="add-movie-form" action="{{ url_for('adicionar_filme') }}" method="POST" enctype="multipart/form-data">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                    {% for category, message in messages %}
+                      <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
+                
+                <label for="title">Nome do Filme:</label>
+                <input type="text" id="title" name="nome" required>
+
+                <label for="year">Ano:</label>
+                <input type="number" id="year" name="ano" required>
+
+                <label for="genre">Gênero:</label>
+                <input type="text" id="genre" name="genero" required>
+
+                <label for="cover">Pôster do Filme:</label>
+                <input type="file" id="cover" name="poster" accept="image/*" required>
+
+                <label for="synopsis">Sinopse:</label>
+                <textarea id="synopsis" name="sinopse" rows="4" required></textarea>
+
+                <div class="form-buttons">
+                    <button type="submit">Salvar Filme</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Movie Vault. Todos os direitos reservados.</p>
+    </footer>
+    </body>
+</html>
